@@ -3,7 +3,6 @@
 const { Usermodel } = require("../models/index");
 
 module.exports = async (req, res, next) => {
-    console.log('ssssss');
   if (req.headers["authorization"]) {
     let token = req.headers.authorization.split(" ")[1];
     try {
