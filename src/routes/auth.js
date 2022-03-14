@@ -9,8 +9,6 @@ const acl = require("../middleware/acl");
 const {HomeW, homeWCollect} = require('../models/index');
 
 router.param("model", (req, res, next) => {
-  console.log("req.params.model", req.params.model);
-  console.log('ssssssssssss',models);
   if (models[req.params.model]) {
     req.model = models[req.params.model];
     next();
@@ -21,7 +19,6 @@ router.param("model", (req, res, next) => {
 
 router.post("/:model", bearerMid, acl("create"), async (req, res) => {
   let body = req.body;
-  console.log(req.model);
   let newModels = await req.model.dataCreate(body);
   res.status(201).send(newModels);
 });
@@ -46,7 +43,7 @@ router.put("/:model/:id", bearerMid, acl("update"), async (req, res) => {
 router.delete("/:model/:id", bearerMid, acl("delete"), async (req, res) => {
   let { id } = req.params;
   await req.model.dataDelete(id);
-  res.status(200).send("removedModels");
+  res.status(200).send("removed Homework");
 });
 
 module.exports = router;
