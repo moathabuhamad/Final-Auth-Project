@@ -1,9 +1,9 @@
 "use strict";
 
-const { Users } = require("../models/index");
+// const { Users } = require("../models/index");
 const base64 = require("base-64");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+
+const {Usermodel} =require('../models/index');
 
 module.exports = async (req, res, next) => {
   if (req.headers.authorization) {
@@ -15,25 +15,9 @@ module.exports = async (req, res, next) => {
     console.log(username,password);
     try {
         console.log("*******Moath********")
-      let validUser = async function authenticateBasic (username,password) {
-        try {
-            const student = await this.findOne({where:{username:username}});
-            const valid = await bcrypt.compare(password,student.password);
-            if(valid) {
-                let newToken = jwt.sign({exp:Math.floor(Date.now()/1000)+900,username:student.username},SECRET);
-                student.token = newToken;
-                return student;
-            } else {
-      
-                throw new Error('Invalid password');
-            }
-        } catch(error) {
-           throw new Error(`error ,${error}`);
-        }
-      };
-      console.log(validUser);
-      req.user = validUser;
-      next();
+        let validUser = await Usermodel.authenticateBasic(username, password);
+        req.user = validUser;
+        next();
     } catch (err) {
       res.status(403).send(err);
     }
