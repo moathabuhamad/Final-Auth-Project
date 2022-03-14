@@ -6,7 +6,7 @@ require("dotenv").config();
 const Users = require("./users-model");
 const HomeWorks = require('./homeworks');
 
-const SECRET = process.env.SECRET;
+const SECRET = process.env.SECRET || "secret";
 
 const DATABASE_URL =
   process.env.NODE_ENV == "test" ? "sqlite:memory" : process.env.DATABASE_URL;
