@@ -28,5 +28,5 @@ module.exports = {
   Users: userCollect,
   Usermodel:user,
   HomeW:HomeW,
-  homeWCollect:homeWCollect
+  homework:homeWCollect
 };

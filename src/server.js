@@ -15,7 +15,7 @@ app.use(cors());
 app.use(signUprouter);
 app.use(signInrouter);
 app.use(userRouter);
-app.use('/users',authRoute);
+app.use(authRoute);
 
 app.get("/", (req, res) => {
   res.send("Home Page");

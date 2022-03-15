@@ -7,10 +7,14 @@ We used authentication and authorization using token and JWT package
 
 ### The end points:
 
-1. /signin
-2. /signup
-3. /user
-4. /users/homeWCollect
+| Endpoint | Description |
+| ----------- | ----------- |
+| /signup | Title |
+| /signin | Text |
+| POST:/homeWork  | Takes {title,info,grade} in body and creates a new homework |
+| GET:/homework/(id) | Gets all homework from table |
+| PUT:/homework/id | updates the homework id |
+| DELETE:homework/id | deletes the homework id |
 
 * [Salam PR link](https://github.com/moathabuhamad/Final-Auth-Project/pull/2)
 
